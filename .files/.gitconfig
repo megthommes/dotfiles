@@ -1,0 +1,18 @@
+[user]
+    name = Meghan Thommes
+    email = meghan.thommes@gmail.com
+[github]
+    user = megthommes
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+    sshCommand = ssh -i ~/.ssh/id_ed25519
+[core]
+    sshCommand = ssh -i ~/.ssh/id_ed25519 -F /dev/null
+    excludesfile = ~/.gitignore
+[init]
+    defaultBranch = main
+[push]
+    autoSetupRemote = current
+    default = simple
+[pull]
+    rebase = true
