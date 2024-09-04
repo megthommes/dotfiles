@@ -1,24 +1,25 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # aliases
 for alias_file in $ZDOTDIR/.shell_aliases/*.zsh; do
     source "$alias_file"
 done
 
 # navigation
-setopt CORRECT              # Spelling correction
+setopt AUTO_CD              # Change directory without cd.
+setopt CORRECT              # Spelling correction.
 setopt CDABLE_VARS          # Change directory to a path stored in a variable.
 setopt EXTENDED_GLOB        # Use extended globbing syntax.
+
+# shortcuts
+source $ZDOTDIR/.shortcuts.sh
 
 # scripts
 for script_file in $ZDOTDIR/.scripts/*.zsh; do
     source "$script_file"
 done
+
+# prompt
+fpath=($ZDOTDIR/prompt_megthommes_setup $fpath)
+source $ZDOTDIR/prompt_megthommes_setup
 
 # history
 setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
@@ -34,15 +35,14 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 
 # plugins
 for plugin_dir in $ZDOTDIR/.plugins/*(/); do
-    if [[ -f "$plugin_dir/${plugin_dir:t}.*.zsh" ]]; then
+    if [[ ${plugin_dir:t} == "zsh-completions" ]]; then
+        fpath=("$plugin_dir/src" $fpath)
+    elif [[ -f "$plugin_dir/${plugin_dir:t}.*.zsh" ]]; then
         source "$plugin_dir/${plugin_dir:t}.*.zsh"
     elif [[ -f "$plugin_dir/${plugin_dir:t}.zsh" ]]; then
         source "$plugin_dir/${plugin_dir:t}.zsh"
     fi
 done
-
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f $ZDOTDIR/.p10k.zsh ]] || source $ZDOTDIR/.p10k.zsh
 
 # direnv
 eval "$(direnv hook zsh)"

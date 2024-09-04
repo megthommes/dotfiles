@@ -1,12 +1,12 @@
 # Meghan's dotfiles
 
-This repository contains my personal dotfiles and configuration files for my development environment. Now I can customize my terminal wherever I go.
+This repository contains my personal dotfiles and configuration files for my development environment.
 
 ## Inspiration
 
-[Configuring Zsh Without Dependencies](https://thevaluable.dev/zsh-install-configure-mouseless/)
+[Configuring Zsh Without Dependencies](https://thevaluable.dev/zsh-install-configure-mouseless) ([Matthieu Cneude's dotfiles](https://github.com/Phantas0s/.dotfiles))
 
-[Data Science Bootstrap](https://ericmjl.github.io/data-science-bootstrap-notes/configure-your-machine/)
+[Data Science Bootstrap](https://ericmjl.github.io/data-science-bootstrap-notes) ([Eric Ma's dotfiles](https://github.com/ericmjl/dotfiles))
 
 [Paul Miller's dotfiles](https://github.com/paulmillr/dotfiles)
 
