@@ -6,4 +6,3 @@ export PATH=$PATH:$HOME/.local/bin
 
 # homebrew
 export PATH="/opt/homebrew/bin:$PATH"
-

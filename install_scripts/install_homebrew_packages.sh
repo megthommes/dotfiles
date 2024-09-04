@@ -7,7 +7,7 @@ source ./utils/homebrew_packages.zsh
 if ! command -v brew &> /dev/null; then    export OLDPATH=$PATH
     export ORIGINALLY_NO_BREW="true"
     echo "Setting path to include Homebrew temporarily."
-    export PATH=/opt/homebrew/bin:$PATH
+    export PATH=$HOMEBREW_PREFIX/bin:$PATH
 fi
 
 # Install homebrew packages that might not already be installed.

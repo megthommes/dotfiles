@@ -15,6 +15,19 @@ export HISTFILESIZE="${HISTSIZE}";
 export SAVEHIST="${HISTSIZE}";
 export HISTCONTROL='ignoreboth';        # omit duplicates and commands that begin with a space from history
 
+# homebrew
+if [ -z "${HOMEBREW_PREFIX}" ]; then
+    # Check for Intel Mac
+    if [ -d "/usr/local/Homebrew" ]; then
+        export HOMEBREW_PREFIX="/usr/local"
+    # Check for Apple Silicon Mac
+    elif [ -d "/opt/homebrew" ]; then
+        export HOMEBREW_PREFIX="/opt/homebrew"
+    else
+        echo "Homebrew installation not found"
+    fi
+fi
+
 # Prefer US English and use UTF-8.
 export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
