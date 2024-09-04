@@ -61,7 +61,13 @@ prompt_git_branch() {
 
 # display git info
 prompt_git_info() {
-    [ ! -z "$vcs_info_msg_0_" ] && echo "$ZSH_THEME_GIT_PROMPT_PREFIX%B%F{yellow}$vcs_info_msg_0_%f%b$ZSH_THEME_GIT_PROMPT_SUFFIX"
+    if [ ! -z "$vcs_info_msg_0_" ]; then
+        local branch_color="{yellow}"
+        if [ "$vcs_info_msg_0_" = "main" ]; then
+            branch_color="{red}"
+        fi
+        echo "$ZSH_THEME_GIT_PROMPT_PREFIX%B%F${branch_color}$vcs_info_msg_0_%f%b$ZSH_THEME_GIT_PROMPT_SUFFIX"
+    fi
 }
 
 # display git status
