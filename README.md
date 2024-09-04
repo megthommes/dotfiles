@@ -20,7 +20,7 @@ This repository contains my personal dotfiles and configuration files for my dev
 $ cd ~
 $ git clone git@github.com:megthommes/dotfiles
 $ cd dotfiles
-$ ./install.zsh
+$ ./install.sh
 ```
 
 ### For others
@@ -36,7 +36,7 @@ If you have SSH access enabled:
 ```sh
 $ git clone git@github.com:YOUR-USERNAME/dotfiles
 $ cd dotfiles
-$ ./install.zsh
+$ ./install.sh
 ```
 
 If you don't have SSH access enabled:
@@ -44,5 +44,5 @@ If you don't have SSH access enabled:
 ```sh
 $ git clone https://github.com/YOUR-USERNAME/dotfiles
 $ cd dotfiles
-$ ./install.zsh
+$ ./install.sh
 ```
