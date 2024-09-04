@@ -16,9 +16,9 @@ alias gc='git commit'                       # commit changes
 alias gca='git commit --amend'              # amend the last commit
 alias gd='git diff'                         # show diff of unstaged changes
 # checkout branch or create it if it doesn't exist
-alias gco="!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
-alias gsub="git submodule update --remote" # pull submodules
-alias gclone="git clone --recursive"       # clone repository including all submodules
+alias gco='f() { git checkout -b "$1" 2> /dev/null || git checkout "$1"; }; f'
+alias gsub="git submodule update --remote"  # pull submodules
+alias gclone="git clone --recursive"        # clone repository including all submodules
 
 # branch management
 alias gb='git branch '     # list or manipulate branches
