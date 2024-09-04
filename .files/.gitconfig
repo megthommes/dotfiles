@@ -12,7 +12,7 @@
 [init]
     defaultBranch = main
 [push]
-    autoSetupRemote = current
+    autoSetupRemote = true
     default = simple
 [pull]
     rebase = true
