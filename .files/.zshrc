@@ -3,6 +3,9 @@ for alias_file in $ZDOTDIR/.shell_aliases/*.zsh; do
     source "$alias_file"
 done
 
+# environment variables
+source $ZDOTDIR/.env_vars.sh
+
 # navigation
 setopt AUTO_CD              # Change directory without cd.
 setopt CORRECT              # Spelling correction.
