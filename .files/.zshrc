@@ -34,6 +34,7 @@ setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history
 setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
 
 # plugins
+source $ZDOTDIR/.plugins/completion.zsh
 for plugin_dir in $ZDOTDIR/.plugins/*(/); do
     if [[ ${plugin_dir:t} == "zsh-completions" ]]; then
         fpath=("$plugin_dir/src" $fpath)
@@ -43,6 +44,9 @@ for plugin_dir in $ZDOTDIR/.plugins/*(/); do
         source "$plugin_dir/${plugin_dir:t}.zsh"
     fi
 done
+
+# Set up key bindings for completion
+bindkey '^[[Z' autosuggest-accept # Shift+Tab
 
 # direnv
 eval "$(direnv hook zsh)"
