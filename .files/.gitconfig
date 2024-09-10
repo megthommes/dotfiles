@@ -9,6 +9,8 @@
 [core]
     sshCommand = ssh -i ~/.ssh/id_ed25519 -F /dev/null
     excludesfile = ~/.gitignore
+[commit]
+    gpgsign = true
 [init]
     defaultBranch = main
 [push]
@@ -16,3 +18,5 @@
     default = simple
 [pull]
     rebase = true
+[include]
+    path = $HOME/.gitconfig.local
