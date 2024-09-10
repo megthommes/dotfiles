@@ -47,11 +47,5 @@ Modify `.gitconfig` to set your name, email, and username, then run the install 
 
 ```sh
 $ cd dotfiles
-$ ./install.sh
-```
-
-and source the `.zshrc` file to apply the changes:
-
-```sh
-$ reshell # alias for `source ~/.zshrc`
+$ make install
 ```

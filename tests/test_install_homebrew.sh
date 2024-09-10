@@ -3,7 +3,7 @@
 echo "Testing that Homebrew is installed..."
 
 if ! command -v brew &> /dev/null; then
-    echo "\tError: Homebrew is not installed."
+    echo "Error: Homebrew is not installed."
     exit 1
 fi
 
