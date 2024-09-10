@@ -23,7 +23,7 @@ alias gc='git commit -S'                    # commit changes
 alias gca='git commit --amend --no-edit -S' # amend the last commit without editing the message
 alias gd='git diff'                         # show diff of unstaged changes
 # checkout branch or create it if it doesn't exist
-alias gco='git checkout -b "$1" 2>/dev/null || git checkout "$1"'
+alias gco='f() { git checkout -b "$1" 2>/dev/null || git checkout "$1"; }; f'
 alias gsub='git submodule update --remote'  # pull submodules
 alias gclone='git clone --recursive'        # clone repository including all submodules
 alias gps='git push'                        # push changes to remote repository
