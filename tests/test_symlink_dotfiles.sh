@@ -14,7 +14,7 @@ FILES_TO_TEST=(
 for file in "${FILES_TO_TEST[@]}"; do
     test -f $file
     if [ $? != 0 ]; then
-        echo "\tError: $file does not exist";
+        echo "Error: $file does not exist";
     fi
 done
 echo "...done testing files"
@@ -28,7 +28,7 @@ DIRECTORIES_TO_TEST=(
 for directory in "${DIRECTORIES_TO_TEST[@]}"; do
     test -d $directory
     if [ $? != 0 ]; then
-        echo "\tError: $directory does not exist";
+        echo "Error: $directory does not exist";
     fi
 done
 echo "...done testing directories"
