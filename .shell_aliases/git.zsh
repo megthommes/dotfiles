@@ -18,7 +18,7 @@ alias gd='git diff'                         # show diff of unstaged changes
 # checkout branch or create it if it doesn't exist
 alias gco='f() { git checkout -b "$1" 2> /dev/null || git checkout "$1"; }; f'
 alias gsub="git submodule update --remote"  # pull submodules
-alias gclone="git clone --recursive"       # clone repository including all submodules
+alias gclone="git clone --recursive"        # clone repository including all submodules
 
 # branch management
 alias gb='git branch '     # list or manipulate branches
@@ -26,9 +26,8 @@ alias gbr='git branch -r'  # list remote branches
 alias gba='git branch -a'  # list all branches (local and remote)
 alias gf='git fetch'       # fetch changes from remote repository
 # delete local branch merged with main
-alias gclean="git branch --merged | grep  -v '\\*\\|main\\|develop' | xargs -n 1 git branch -d"
+alias gclean="git fetch --all --prune; git branch --merged | grep  -v '\\*\\|main\\|develop' | xargs -n 1 git branch -d"
 
 # push and pull
 alias gps='git push'                       # push changes to remote repository
-alias gpso='git push origin'               # push changes to origin remote repository
 alias gpl='git pull  --recurse-submodules' # pull changes from remote repository and update submodules
