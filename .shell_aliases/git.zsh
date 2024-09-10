@@ -37,10 +37,11 @@ alias gf='git fetch'       # fetch changes from remote repository
 # delete local branch merged with main
 alias gclean='
   original_branch=$(git rev-parse --abbrev-ref HEAD)
+  protected_branches="main $original_branch"
 
   if ! git diff --quiet || ! git diff --staged --quiet; then
-    echo "Stashing changes..."
-    git stash push -q -m "gclean_stash" || echo "Error: Failed to stash changes"
+    stash_name="gclean_$(date +%s)"
+    git stash push -q -m "$stash_name" || echo "Error: Failed to stash changes"
     stashed=true
   else
     stashed=false
@@ -65,9 +66,12 @@ alias gclean='
   git remote prune origin
 
   if [ "$stashed" = true ]; then
-    if git stash list | grep -q "gclean_stash"; then
-        git stash pop -q "stash^{/gclean_stash}" || echo "Error: Failed to pop stash"
+    stash_index=$(git stash list | grep -n "$stash_name" | cut -d: -f1)
+    if [ -n "$stash_index" ]; then
+        stash_index=$((stash_index - 1))
+        git stash pop -q "stash@{${stash_index}}" || echo "Error: Failed to pop stash"
     else
         echo "Warning: gclean_stash not found in stash list"
+    fi
   fi
 '
