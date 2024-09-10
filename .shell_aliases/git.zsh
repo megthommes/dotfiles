@@ -12,12 +12,12 @@ alias gblog="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD)
 
 # operations
 alias ga='git add'                          # add changes to the staging area
-alias gc='git commit'                       # commit changes
-alias gca='git commit --amend'              # amend the last commit
+alias gc='git commit -S'                    # commit changes
+alias gca='git commit --amend --no-edit -S' # amend the last commit without editing the message
 alias gd='git diff'                         # show diff of unstaged changes
 # checkout branch or create it if it doesn't exist
-alias gco="!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
-alias gsub="git submodule update --remote" # pull submodules
+alias gco='f() { git checkout -b "$1" 2> /dev/null || git checkout "$1"; }; f'
+alias gsub="git submodule update --remote"  # pull submodules
 alias gclone="git clone --recursive"       # clone repository including all submodules
 
 # branch management

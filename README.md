@@ -20,7 +20,7 @@ This repository contains my personal dotfiles and configuration files for my dev
 $ cd ~
 $ git clone git@github.com:megthommes/dotfiles
 $ cd dotfiles
-$ ./install.zsh
+$ ./install.sh
 ```
 
 ### For others
@@ -35,14 +35,23 @@ If you have SSH access enabled:
 
 ```sh
 $ git clone git@github.com:YOUR-USERNAME/dotfiles
-$ cd dotfiles
-$ ./install.zsh
 ```
 
 If you don't have SSH access enabled:
 
 ```sh
 $ git clone https://github.com/YOUR-USERNAME/dotfiles
+```
+
+Modify `.gitconfig` to set your name, email, and username, then run the install script:
+
+```sh
 $ cd dotfiles
-$ ./install.zsh
+$ ./install.sh
+```
+
+and source the `.zshrc` file to apply the changes:
+
+```sh
+$ reshell # alias for `source ~/.zshrc`
 ```
