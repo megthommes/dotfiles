@@ -1,6 +1,7 @@
 # homebrew packages to install
 export BREW_PACKAGES=(
   "bat"		    	        # A replacement for cat:  https://github.com/sharkdp/bat
+  "cookiecutter"        # project templates
   "diff-so-fancy"       # A replacement for diff: https://github.com/so-fancy/diff-so-fancy
   "direnv"              # automated environment switching and project-specific configurations
   "fd"		    	        # A replacement for find: https://github.com/sharkdp/fd

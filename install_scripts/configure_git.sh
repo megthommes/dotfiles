@@ -11,8 +11,12 @@ fi
 # get name and email from .gitconfig
 GIT_NAME=$(git config --get user.name)
 GIT_EMAIL=$(git config --get user.email)
-if [ -z "$GIT_NAME" ] || [ -z "$GIT_EMAIL" ]; then
-    echo "Git user name or email not set. Please set them first."
+if [ -z "$GIT_NAME" ]; then
+    echo "Git user name not set."
+    exit 1
+fi
+if [ -z "$GIT_EMAIL" ]; then
+    echo "Git email not set."
     exit 1
 fi
 

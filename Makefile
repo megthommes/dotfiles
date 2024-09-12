@@ -36,35 +36,35 @@ check-zsh:  ## Check if zsh is the default shell
 	@echo
 
 create-directories:  ## Create directories
-	@echo "Creating directories..."
+	@echo "create-directories"
 	@chmod +x ./install_scripts/create_directories.sh
 	@./install_scripts/create_directories.sh
 	@chmod -x ./install_scripts/create_directories.sh
 	@echo
 
 install-homebrew:  ## Install Homebrew
-	@echo "Installing Homebrew..."
+	@echo "install-homebrew"
 	@chmod +x ./install_scripts/install_homebrew.sh
 	@./install_scripts/install_homebrew.sh
 	@chmod -x ./install_scripts/install_homebrew.sh
 	@echo
 
 install-homebrew-packages:  ## Install additional packages using Homebrew
-	@echo "Installing additional packages using Homebrew..."
+	@echo "install-homebrew-packages"
 	@chmod +x ./install_scripts/install_homebrew_packages.sh
 	@./install_scripts/install_homebrew_packages.sh
 	@chmod -x ./install_scripts/install_homebrew_packages.sh
 	@echo
 
 symlink-dotfiles:  ## Symlink dotfiles
-	@echo "Symlinking dotfiles..."
+	@echo "symlink-dotfiles"
 	@chmod +x ./install_scripts/symlink_dotfiles.sh
 	@./install_scripts/symlink_dotfiles.sh
 	@chmod -x ./install_scripts/symlink_dotfiles.sh
 	@echo
 
 configure-git:  ## Configure Git
-	@echo "Configuring Git..."
+	@echo "configure-git"
 	@chmod +x ./install_scripts/configure_git.sh
 	@./install_scripts/configure_git.sh
 	@chmod -x ./install_scripts/configure_git.sh
