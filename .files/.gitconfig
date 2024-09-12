@@ -5,10 +5,10 @@
     user = megthommes
 [url "git@github.com:"]
     insteadOf = https://github.com/
-    sshCommand = ssh -i ~/.ssh/id_ed25519
+    sshCommand = ssh -i $HOME/.ssh/id_ed25519
 [core]
-    sshCommand = ssh -i ~/.ssh/id_ed25519 -F /dev/null
-    excludesfile = ~/.gitignore
+    sshCommand = ssh -i $HOME/.ssh/id_ed25519 -F /dev/null
+    excludesfile = $HOME/.gitignore_global
 [commit]
     gpgsign = true
 [init]
