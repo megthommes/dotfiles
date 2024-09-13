@@ -10,6 +10,7 @@ do
 done
 
 # Install the other dotfiles
+ln -svf $(pwd)/.files/.macos $HOME/.macos
 mkdir -p $HOME/.ssh
 ln -svf $(pwd)/.files/.ssh/config $HOME/.ssh/config
 mkdir -p $XDG_CONFIG_HOME/tmux
