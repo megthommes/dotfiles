@@ -3,6 +3,7 @@ SHELL := /bin/zsh
 .PHONY: install reshell check-zsh create-directories install-homebrew install-homebrew-packages symlink-dotfiles configure-git
 
 install: ## Install dotfiles
+	@echo "\033[0;36minstall\033[0m"
 	@echo "Starting dotfiles installation..."
 	@echo
 	@$(MAKE) check-zsh
@@ -12,11 +13,13 @@ install: ## Install dotfiles
 	@$(MAKE) symlink-dotfiles
 	@$(MAKE) configure-git
 	@$(MAKE) reshell
+	@$(MAKE) configure-macos
 	@$(MAKE) test
 	@echo
 	@echo "Dotfiles installation complete!"
 
 reshell:  ## Reshell
+	@echo "\033[0;36mreshell\033[0m"
 	@echo "Sourcing .zshrc..."
 	@if [ -f $$ZDOTDIR/.zshrc ]; then \
 		source $$ZDOTDIR/.zshrc; \
@@ -27,6 +30,7 @@ reshell:  ## Reshell
 	@echo
 
 check-zsh:  ## Check if zsh is the default shell
+	@echo "\033[0;36mcheck-zsh\033[0m"
 	@echo "Checking if zsh is the default shell..."
 	@if [ "$${SHELL##*/}" != "zsh" ]; then \
 		echo 'You might need to change default shell to zsh: `chsh -s /bin/zsh`'; \
@@ -36,41 +40,49 @@ check-zsh:  ## Check if zsh is the default shell
 	@echo
 
 create-directories:  ## Create directories
-	@echo "create-directories"
+	@echo "\033[0;36mcreate-directories\033[0m"
 	@chmod +x ./install_scripts/create_directories.sh
 	@./install_scripts/create_directories.sh
 	@chmod -x ./install_scripts/create_directories.sh
 	@echo
 
 install-homebrew:  ## Install Homebrew
-	@echo "install-homebrew"
+	@echo "\033[0;36minstall-homebrew\033[0m"
 	@chmod +x ./install_scripts/install_homebrew.sh
 	@./install_scripts/install_homebrew.sh
 	@chmod -x ./install_scripts/install_homebrew.sh
 	@echo
 
 install-homebrew-packages:  ## Install additional packages using Homebrew
-	@echo "install-homebrew-packages"
+	@echo "\033[0;36minstall-homebrew-packages\033[0m"
 	@chmod +x ./install_scripts/install_homebrew_packages.sh
 	@./install_scripts/install_homebrew_packages.sh
 	@chmod -x ./install_scripts/install_homebrew_packages.sh
 	@echo
 
 symlink-dotfiles:  ## Symlink dotfiles
-	@echo "symlink-dotfiles"
+	@echo "\033[0;36msymlink-dotfiles\033[0m"
 	@chmod +x ./install_scripts/symlink_dotfiles.sh
 	@./install_scripts/symlink_dotfiles.sh
 	@chmod -x ./install_scripts/symlink_dotfiles.sh
 	@echo
 
+configure-macos:  ## Configure MacOS
+	@echo "\033[0;36mconfigure-macos\033[0m"
+	@chmod +x ./install_scripts/configure_macos.sh
+	@./install_scripts/configure_macos.sh
+	@chmod -x ./install_scripts/configure_macos.sh
+	@echo
+
 configure-git:  ## Configure Git
-	@echo "configure-git"
+	@echo "\033[0;36mconfigure-git\033[0m"
 	@chmod +x ./install_scripts/configure_git.sh
 	@./install_scripts/configure_git.sh
 	@chmod -x ./install_scripts/configure_git.sh
 	@echo
 
 test:  ## Run tests
+	@echo "\033[0;36mtest\033[0m"
 	@echo "Running tests..."
 	@chmod +x tests/*
 	@echo
