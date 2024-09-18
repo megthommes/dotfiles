@@ -1,6 +1,6 @@
 SHELL := /bin/zsh
 
-.PHONY: install reshell check-zsh create-directories install-homebrew install-homebrew-packages symlink-dotfiles configure-git
+.PHONY: install update reshell check-zsh create-directories install-homebrew install-homebrew-packages symlink-dotfiles configure-git
 
 install: ## Install dotfiles
 	@echo "\033[0;36minstall\033[0m"
@@ -17,6 +17,18 @@ install: ## Install dotfiles
 	@$(MAKE) test
 	@echo
 	@echo "Dotfiles installation complete!"
+
+update:  ## Update dotfiles
+	@echo "\033[0;36mupdate\033[0m"
+	@echo "Updating dotfiles..."
+	@echo
+	@$(MAKE) create-directories
+	@$(MAKE) install-homebrew-packages
+	@$(MAKE) symlink-dotfiles
+	@$(MAKE) reshell
+	@$(MAKE) test
+	@echo
+	@echo "Dotfiles updated!"
 
 reshell:  ## Reshell
 	@echo "\033[0;36mreshell\033[0m"

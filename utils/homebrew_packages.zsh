@@ -14,6 +14,7 @@ export BREW_PACKAGES=(
   "micro"               # micro text editor
   "mosh"                # mobile shell
   "nano"                # get an enhanced nano
+  "nvm"                 # node version manager
   "pipx"                # python package manager
   "pyenv"               # python version management
   "ripgrep"             # A replacement for grep: https://github.com/BurntSushi/ripgrep
@@ -21,7 +22,6 @@ export BREW_PACKAGES=(
   "tree"                # get the standard "tree" command on Linux.
   "wget"                # curl alternative https://www.gnu.org/software/wget/
   "zsh"                 # z-shell
-  "pass"                # password manager https://www.passwordstore.org/
 )
 export CASK_PACKAGES=(
   "font-hack-nerd-font" # nerd fonts, required for lsd
