@@ -1,3 +1,6 @@
+.direnv/
+.envrc.user
+
 # Created by https://www.toptal.com/developers/gitignore/api/git,python,database,flask,django,react,reactnative,jupyternotebooks,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=git,python,database,flask,django,react,reactnative,jupyternotebooks,macos
 
@@ -300,7 +303,8 @@ instance/*
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
