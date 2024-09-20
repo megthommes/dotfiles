@@ -1,0 +1,13 @@
+default_stages: [manual, push, pre-commit]
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+    -   id: trailing-whitespace # trim trailing whitespace
+    -   id: fix-byte-order-marker # removes UTF-8 byte order marker
+    -   id: end-of-file-fixer # makes sure files end in a newline
+    -   id: check-case-conflict # check for files with names that conflict on case-insensitive filesystems
+    -   id: check-merge-conflict # check for files that contain merge conflict strings
+    -   id: check-added-large-files # check for large files added to git
+    -   id: check-executables-have-shebangs # check that executable files have a shebang
+    -   id: check-json # check for valid JSON
