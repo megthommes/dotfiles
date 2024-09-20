@@ -1,7 +1,8 @@
 #!/bin/bash
 # Install dotfiles
 
-echo "Symlinking dotfiles..."
+RED='\033[0;31m'
+RESET='\033[0m'
 
 # Install the shell config file
 rm -f $HOME/.zshrc
@@ -25,15 +26,15 @@ GIT_NAME=$(git config --get user.name)
 GIT_EMAIL=$(git config --get user.email)
 GIT_USERNAME=$(git config --get github.user)
 if [ -z "$GIT_NAME" ]; then
-    echo "Git user name not set."
+    echo -e "${RED}Error: Git user name not set.${RESET}"
     exit 1
 fi
 if [ -z "$GIT_EMAIL" ]; then
-    echo "Git email not set."
+    echo -e "${RED}Error: Git email not set.${RESET}"
     exit 1
 fi
 if [ -z "$GIT_USERNAME" ]; then
-    echo "Git username not set."
+    echo -e "${RED}Error: Git username not set.${RESET}"
     exit 1
 fi
 touch $COOKIECUTTER_CONFIG
@@ -52,5 +53,3 @@ ln -svf "$(pwd)/.shell_aliases" $ZDOTDIR
 
 # Install plugins
 ln -svf "$(pwd)/.plugins" $ZDOTDIR
-
-echo "...dotfiles symlinked."

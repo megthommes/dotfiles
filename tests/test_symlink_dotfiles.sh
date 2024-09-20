@@ -1,6 +1,8 @@
 #!/bin/bash
 # Test that the dotfiles are symlinked
-echo "Testing that the files are symlinked..."
+
+RED='\033[0;31m'
+RESET='\033[0m'
 
 FILES_TO_TEST=(
     "$ZDOTDIR/.zshrc"
@@ -11,16 +13,13 @@ FILES_TO_TEST=(
     "$HOME/.ssh/config"
     "$XDG_CONFIG_HOME/tmux/.tmux.conf"
 )
-
 for file in "${FILES_TO_TEST[@]}"; do
     test -f $file
     if [ $? != 0 ]; then
-        echo "Error: $file does not exist";
+        echo -e "${RED}Error: $file does not exist.${RESET}"
     fi
 done
-echo "...done testing files"
 
-echo "Testing that the directories are symlinked..."
 DIRECTORIES_TO_TEST=(
     "$ZDOTDIR/.scripts"
     "$ZDOTDIR/.shell_aliases"
@@ -29,7 +28,6 @@ DIRECTORIES_TO_TEST=(
 for directory in "${DIRECTORIES_TO_TEST[@]}"; do
     test -d $directory
     if [ $? != 0 ]; then
-        echo "Error: $directory does not exist";
+        echo -e "${RED}Error: $directory does not exist.${RESET}"
     fi
 done
-echo "...done testing directories"

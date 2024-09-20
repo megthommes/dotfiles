@@ -1,29 +1,26 @@
 #!/bin/bash
 # Test that Homebrew packages are installed
-echo "Testing that Homebrew packages are installed..."
 
+RED='\033[0;31m'
+RESET='\033[0m'
+
+# get homebrew packages to install
 source ./utils/homebrew_packages.sh
 
 # Check if Homebrew is installed
 if ! command -v brew &> /dev/null; then
-    echo "Error: Homebrew is not installed."
+    echo -e "${RED}Error: Homebrew is not installed.${RESET}"
     exit 1
 fi
 
-echo "Testing that regular brew packages are installed..."
 for pkg in "${BREW_PACKAGES[@]}"; do
     if ! brew list --formula | grep -q "^${pkg}\$"; then
-        echo "Error: $pkg is not installed."
+        echo -e "${RED}Error: $pkg is not installed.${RESET}"
     fi
 done
-echo "...done testing regular brew packages"
 
-echo "Testing that cask packages are installed..."
 for pkg in "${CASK_PACKAGES[@]}"; do
     if ! brew list --cask | grep -q "^${pkg}\$"; then
-        echo "Error: $pkg is not installed."
+        echo -e "${RED}Error: $pkg is not installed.${RESET}"
     fi
 done
-echo "...done testing cask packages"
-
-echo "...done testing Homebrew packages"
