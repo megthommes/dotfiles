@@ -1,7 +1,6 @@
 SHELL := /bin/zsh
 
-.PHONY: install update reshell check-zsh create-directories install-homebrew install-homebrew-packages symlink-dotfiles configure-git
-
+.PHONY: install
 install: ## Install dotfiles
 	@echo "\033[0;36minstall\033[0m"
 	@echo "Starting dotfiles installation..."
@@ -18,6 +17,7 @@ install: ## Install dotfiles
 	@echo
 	@echo "Dotfiles installation complete!"
 
+.PHONY: update
 update:  ## Update dotfiles
 	@echo "\033[0;36mupdate\033[0m"
 	@echo "Updating dotfiles..."
@@ -30,6 +30,7 @@ update:  ## Update dotfiles
 	@echo
 	@echo "Dotfiles updated!"
 
+.PHONY: reshell
 reshell:  ## Reshell
 	@echo "\033[0;36mreshell\033[0m"
 	@echo "Sourcing .zshrc..."
@@ -41,6 +42,7 @@ reshell:  ## Reshell
 	fi
 	@echo
 
+.PHONY: check-zsh
 check-zsh:  ## Check if zsh is the default shell
 	@echo "\033[0;36mcheck-zsh\033[0m"
 	@echo "Checking if zsh is the default shell..."
@@ -51,6 +53,7 @@ check-zsh:  ## Check if zsh is the default shell
 	fi
 	@echo
 
+.PHONY: create-directories
 create-directories:  ## Create directories
 	@echo "\033[0;36mcreate-directories\033[0m"
 	@chmod +x ./install_scripts/create_directories.sh
@@ -58,6 +61,7 @@ create-directories:  ## Create directories
 	@chmod -x ./install_scripts/create_directories.sh
 	@echo
 
+.PHONY: install-homebrew
 install-homebrew:  ## Install Homebrew
 	@echo "\033[0;36minstall-homebrew\033[0m"
 	@chmod +x ./install_scripts/install_homebrew.sh
@@ -65,6 +69,7 @@ install-homebrew:  ## Install Homebrew
 	@chmod -x ./install_scripts/install_homebrew.sh
 	@echo
 
+.PHONY: install-homebrew-packages
 install-homebrew-packages:  ## Install additional packages using Homebrew
 	@echo "\033[0;36minstall-homebrew-packages\033[0m"
 	@chmod +x ./install_scripts/install_homebrew_packages.sh
@@ -72,6 +77,7 @@ install-homebrew-packages:  ## Install additional packages using Homebrew
 	@chmod -x ./install_scripts/install_homebrew_packages.sh
 	@echo
 
+.PHONY: symlink-dotfiles
 symlink-dotfiles:  ## Symlink dotfiles
 	@echo "\033[0;36msymlink-dotfiles\033[0m"
 	@chmod +x ./install_scripts/symlink_dotfiles.sh
@@ -79,6 +85,7 @@ symlink-dotfiles:  ## Symlink dotfiles
 	@chmod -x ./install_scripts/symlink_dotfiles.sh
 	@echo
 
+.PHONY: configure-macos
 configure-macos:  ## Configure MacOS
 	@echo "\033[0;36mconfigure-macos\033[0m"
 	@chmod +x ./install_scripts/configure_macos.sh
@@ -86,6 +93,7 @@ configure-macos:  ## Configure MacOS
 	@chmod -x ./install_scripts/configure_macos.sh
 	@echo
 
+.PHONY: configure-git
 configure-git:  ## Configure Git
 	@echo "\033[0;36mconfigure-git\033[0m"
 	@chmod +x ./install_scripts/configure_git.sh
@@ -93,6 +101,7 @@ configure-git:  ## Configure Git
 	@chmod -x ./install_scripts/configure_git.sh
 	@echo
 
+.PHONY: test
 test:  ## Run tests
 	@echo "\033[0;36mtest\033[0m"
 	@echo "Running tests..."
@@ -111,7 +120,19 @@ test:  ## Run tests
 	@chmod -x tests/*
 	@echo "Tests complete!"
 
-# Help
+.PHONY: pre-commit-staged
+pre-commit-staged:  ## Run pre-commit on staged files
+	@echo "\033[0;36mpre-commit-staged\033[0m"
+	@echo "Running pre-commit on staged files..."
+	@pre-commit run --files $(git diff --cached --name-only)
+
+.PHONY: pre-commit-all
+pre-commit-all:  ## Run pre-commit on all files
+	@echo "\033[0;36mpre-commit-all\033[0m"
+	@echo "Running pre-commit on all files..."
+	@pre-commit run --all-files
+
+.PHONY: help
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "%s%s%s\n", $$1, FS, $$2}' | sort -t: -k1,1 -k2 | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
