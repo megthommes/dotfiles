@@ -1,3 +1,4 @@
+#!/bin/bash
 # Configure Git
 echo "Configuring Git..."
 

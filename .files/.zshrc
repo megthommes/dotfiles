@@ -1,10 +1,10 @@
 # aliases
-for alias_file in $ZDOTDIR/.shell_aliases/*.zsh; do
+for alias_file in "$ZDOTDIR"/.shell_aliases/*.sh; do
     source "$alias_file"
 done
 
 # environment variables
-source $ZDOTDIR/.env_vars.sh
+source "$ZDOTDIR/.env_vars.sh"
 
 # navigation
 setopt AUTO_CD              # Change directory without cd.
@@ -13,16 +13,16 @@ setopt CDABLE_VARS          # Change directory to a path stored in a variable.
 setopt EXTENDED_GLOB        # Use extended globbing syntax.
 
 # shortcuts
-source $ZDOTDIR/.shortcuts.sh
+source "$ZDOTDIR/.shortcuts.sh"
 
 # scripts
-for script_file in $ZDOTDIR/.scripts/*.zsh; do
+for script_file in "$ZDOTDIR"/.scripts/*.zsh; do
     source "$script_file"
 done
 
 # prompt
-fpath=($ZDOTDIR/prompt_megthommes_setup $fpath)
-source $ZDOTDIR/prompt_megthommes_setup
+fpath=("$ZDOTDIR/prompt_megthommes_setup" $fpath)
+source "$ZDOTDIR/prompt_megthommes_setup"
 
 # history
 setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
@@ -37,8 +37,8 @@ setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history
 setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
 
 # plugins
-source $ZDOTDIR/.plugins/completion.zsh
-for plugin_dir in $ZDOTDIR/.plugins/*(/); do
+source "$ZDOTDIR/.plugins/completion.zsh"
+for plugin_dir in "$ZDOTDIR"/.plugins/*(/); do
     if [[ ${plugin_dir:t} == "zsh-completions" ]]; then
         fpath=("$plugin_dir/src" $fpath)
     elif [[ -f "$plugin_dir/${plugin_dir:t}.*.zsh" ]]; then

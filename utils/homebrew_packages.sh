@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # homebrew packages to install
 export BREW_PACKAGES=(
   "bat"		    	        # A replacement for cat:  https://github.com/sharkdp/bat

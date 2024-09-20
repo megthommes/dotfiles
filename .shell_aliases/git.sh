@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # status and information
 alias gs='git status'         # show status of working directory and staging area
 alias gss='git status -s'     # `gs` in short format

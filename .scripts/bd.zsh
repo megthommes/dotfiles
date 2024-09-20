@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # Based on:
 # https://github.com/Phantas0s/.dotfiles/blob/master/zsh/plugins/bd.zsh
 # by Matthieu Cneude

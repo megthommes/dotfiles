@@ -1,3 +1,4 @@
+#!/bin/bash
 # Install Homebrew
 echo "Checking to see if Homebrew is installed..."
 

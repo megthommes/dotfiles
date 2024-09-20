@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # python
 alias python=python3
 

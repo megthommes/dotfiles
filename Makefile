@@ -17,19 +17,6 @@ install: ## Install dotfiles
 	@echo
 	@echo "Dotfiles installation complete!"
 
-.PHONY: update
-update:  ## Update dotfiles
-	@echo "\033[0;36mupdate\033[0m"
-	@echo "Updating dotfiles..."
-	@echo
-	@$(MAKE) create-directories
-	@$(MAKE) install-homebrew-packages
-	@$(MAKE) symlink-dotfiles
-	@$(MAKE) reshell
-	@$(MAKE) test
-	@echo
-	@echo "Dotfiles updated!"
-
 .PHONY: reshell
 reshell:  ## Reshell
 	@echo "\033[0;36mreshell\033[0m"

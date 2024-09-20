@@ -1,3 +1,9 @@
+#!/bin/zsh
+
+# Based on:
+# https://github.com/Phantas0s/.dotfiles/blob/master/zsh/scripts.zsh
+# by Matthieu Cneude
+
 # mkmv: Create a directory if it doesn't exist and move files/directories into it.
 #
 # Usage: mkmv source destination

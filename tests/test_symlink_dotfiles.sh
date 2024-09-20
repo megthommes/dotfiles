@@ -1,6 +1,7 @@
+#!/bin/bash
 # Test that the dotfiles are symlinked
-
 echo "Testing that the files are symlinked..."
+
 FILES_TO_TEST=(
     "$ZDOTDIR/.zshrc"
     "$ZDOTDIR/.path.sh"

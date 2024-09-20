@@ -1,5 +1,7 @@
+#!/bin/zsh
+
 # Based on:
-# https://github.com/Phantas0s/.dotfiles/blob/master/zsh/plugins/bd.zsh
+# https://github.com/Phantas0s/.dotfiles/blob/master/zsh/scripts.zsh
 # by Matthieu Cneude
 
 # mkcd: Create a directory and change into it.

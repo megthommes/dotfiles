@@ -1,3 +1,4 @@
+#!/bin/bash
 # Install dotfiles
 
 echo "Symlinking dotfiles..."

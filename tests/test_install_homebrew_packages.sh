@@ -1,8 +1,8 @@
+#!/bin/bash
 # Test that Homebrew packages are installed
-
 echo "Testing that Homebrew packages are installed..."
 
-source ./utils/homebrew_packages.zsh
+source ./utils/homebrew_packages.sh
 
 # Check if Homebrew is installed
 if ! command -v brew &> /dev/null; then

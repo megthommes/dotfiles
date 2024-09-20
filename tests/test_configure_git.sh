@@ -1,3 +1,4 @@
+#!/bin/bash
 # Test that Git is configured
 echo "Testing that Git is configured..."
 
