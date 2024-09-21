@@ -9,16 +9,23 @@ repos:
     -   id: check-case-conflict # check for files with names that conflict on case-insensitive filesystems
     -   id: check-merge-conflict # check for files that contain merge conflict strings
     -   id: check-added-large-files # check for large files added to git
-    -   id: check-executables-have-shebangs # check that executable files have a shebang
-    -   id: check-json # check for valid JSON
+    #-   id: check-executables-have-shebangs # check that executable files have a shebang
 
 -   repo: https://github.com/shellcheck-py/shellcheck-py
     rev: v0.10.0.1
     hooks:
     -   id: shellcheck
-        exclude: '.*\.zsh$|^.files/\.zshrc$' # exclude zsh files and .zshrc
+        exclude: '.*\.zsh$|^.files/\.zshrc$' # exclude zsh files and .files/.zshrc
         args: [
             --shell=bash, # doesn't support zsh
             --exclude=SC1090, # SC1090 (warning): ShellCheck can't follow non-constant source. Use a directive to specify location.
             --exclude=SC1091 # SC1091 (info): Not following: <file> was not specified as input (see shellcheck -x).
         ]
+
+-   repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.29.2
+    hooks:
+    -   id: check-github-actions
+        args: ["--verbose"]
+    -   id: check-github-workflows
+        args: ["--verbose"]
