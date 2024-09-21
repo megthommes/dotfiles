@@ -74,7 +74,7 @@ configure-macos:  ## Configure MacOS
 	@chmod +x ./install_scripts/configure_macos.sh
 	@./install_scripts/configure_macos.sh
 	@chmod -x ./install_scripts/configure_macos.sh
-	echo "$(RED)Note that some of these changes require a logout/restart to take effect.($RESET)"
+	echo "$(RED)Note that some of these changes require a logout/restart to take effect.$(RESET)"
 
 .PHONY: configure-git
 configure-git:  ## Configure Git

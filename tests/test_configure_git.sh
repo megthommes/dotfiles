@@ -12,9 +12,8 @@ fi
 
 # check if the SSH key file exists
 SSH_KEY_FILE="$HOME/.ssh/id_ed25519"
-if [ ! -f "SSH_KEY_FILE" ]; then
+if [ ! -f "$SSH_KEY_FILE" ]; then
     echo -e "${RED}Error: SSH key file $SSH_KEY_FILE does not exist.${RESET}"
-    exit 1
 fi
 
 # check if the SSH key is added to GitHub
@@ -30,7 +29,6 @@ fi
 GPG_KEY_ID=$(gpg --list-secret-keys --keyid-format=long | grep sec | awk '{print $2}' | awk -F'/' '{print $2}')
 if [ -z "$GPG_KEY_ID" ]; then
     echo -e "${RED}Error: No GPG key found.${RESET}"
-    exit 1
 fi
 
 # check if the GPG key is added to GitHub
@@ -44,6 +42,5 @@ SUBMODULES=$(git config --file .gitmodules --get-regexp path | awk '{ print $2 }
 for submodule in $SUBMODULES; do
     if [ ! -d "$submodule" ] || [ -z "$(ls -A "$submodule")" ]; then
         echo -e "${RED}Error: Submodule $submodule is not installed or empty.${RESET}s"
-        exit 1
     fi
 done
