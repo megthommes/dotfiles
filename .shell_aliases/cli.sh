@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # ls / tree
 if command -v lsd &> /dev/null; then
     alias ls='lsd'

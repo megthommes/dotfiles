@@ -1,3 +1,6 @@
+#!/bin/bash
+# Environment variables
+
 # XDG
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"

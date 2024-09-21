@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # status and information
 alias gs='git status'         # show status of working directory and staging area
 alias gss='git status -s'     # `gs` in short format
@@ -23,7 +25,9 @@ alias gc='git commit -S'                    # commit changes
 alias gca='git commit --amend --no-edit -S' # amend the last commit without editing the message
 alias gd='git diff'                         # show diff of unstaged changes
 # checkout branch or create it if it doesn't exist
-alias gco='f() { git checkout -b "$1" 2>/dev/null || git checkout "$1"; }; f'
+gco() {
+    git checkout -b "$1" 2>/dev/null || git checkout "$1"
+}
 alias gsub='git submodule update --remote'  # pull submodules
 alias gclone='git clone --recursive'        # clone repository including all submodules
 alias gps='git push'                        # push changes to remote repository
@@ -35,7 +39,7 @@ alias gbr='git branch -r'  # list remote branches
 alias gba='git branch -a'  # list all branches (local and remote)
 alias gf='git fetch'       # fetch changes from remote repository
 # delete local branch merged with main
-alias gclean='
+gclean() {
   original_branch=$(git rev-parse --abbrev-ref HEAD)
   protected_branches="main $original_branch"
 
@@ -53,7 +57,7 @@ alias gclean='
   while read -r branch track; do
     if ! echo "$protected_branches" | grep -q "\b$branch\b"; then
       if [ "$track" = "[gone]" ] || [ -z "$track" ]; then
-        if [ -n "$(git diff main..$branch)" ]; then
+        if [ -n "$(git diff main.."$branch")" ]; then
           echo "Branch $branch has unpushed commits. Skipping."
         else
           echo "Deleting branch: $branch"
@@ -74,4 +78,4 @@ alias gclean='
         echo "Warning: gclean_stash not found in stash list"
     fi
   fi
-'
+}

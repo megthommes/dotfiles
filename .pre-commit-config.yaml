@@ -11,3 +11,14 @@ repos:
     -   id: check-added-large-files # check for large files added to git
     -   id: check-executables-have-shebangs # check that executable files have a shebang
     -   id: check-json # check for valid JSON
+
+-   repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+    -   id: shellcheck
+        exclude: '.*\.zsh$|^.files/\.zshrc$' # exclude zsh files and .zshrc
+        args: [
+            --shell=bash, # doesn't support zsh
+            --exclude=SC1090, # SC1090 (warning): ShellCheck can't follow non-constant source. Use a directive to specify location.
+            --exclude=SC1091 # SC1091 (info): Not following: <file> was not specified as input (see shellcheck -x).
+        ]

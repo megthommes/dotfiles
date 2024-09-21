@@ -1,5 +1,7 @@
+#!/bin/zsh
+
 # Based on:
-# https://github.com/Phantas0s/.dotfiles/blob/master/zsh/plugins/bd.zsh
+# https://github.com/Phantas0s/.dotfiles/blob/master/zsh/scripts.zsh
 # by Matthieu Cneude
 
 # mkcp: Create a directory if it doesn't exist and copy files/directories into it.

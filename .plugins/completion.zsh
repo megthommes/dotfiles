@@ -1,7 +1,8 @@
+#!/bin/zsh
 # Sets completion options.
 
 # load additional zsh-completions
-fpath=($ZDOTDIR/.plugins/zsh-completions/src $fpath)
+fpath=("$ZDOTDIR/.plugins/zsh-completions/src" $fpath)
 
 # call before compinit
 zmodload zsh/complist
