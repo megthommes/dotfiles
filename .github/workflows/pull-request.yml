@@ -1,5 +1,4 @@
 name: pull-request
-description: Run quality checks and tests on pull requests pushed to the main branch
 
 on:
   pull_request:
