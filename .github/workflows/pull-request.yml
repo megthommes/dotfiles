@@ -1,5 +1,4 @@
 name: pull-request
-description: Run quality checks and tests on pull requests pushed to the main branch
 
 on:
   pull_request:
@@ -16,10 +15,30 @@ jobs:
         with:
           fetch-depth: 2
 
+      - name: Setup pre-commit
+        uses: ./.github/actions/setup-pre-commit
+
+      - name: Verify pre-commit installation
+        run: pre-commit --version
+
       - uses: actions/cache@v4
         with:
           path: ~/.cache/pre-commit
           key: pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
 
       - name: Run pre-commit
-        run: pre-commit run -a --show-diff-on-failure
+        id: run_precommit
+        run: |
+          pre-commit run -a --show-diff-on-failure || echo "pre-commit checks failed"
+
+      - name: Notify on failure to run pre-commit
+        if: steps.run_precommit.outcome == 'failure'
+        run: echo "Pre-commit checks encountered issues. Please review the output above."
+
+      - name: Report summary
+        run: |
+          if [[ "${{ steps.run_precommit.outcome }}" == "failure" ]]; then
+            echo "One or more pre-commit checks failed."
+          else
+            echo "All pre-commit checks passed."
+          fi

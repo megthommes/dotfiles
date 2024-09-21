@@ -1,0 +1,11 @@
+name: "setup-pre-commit"
+description: "Install pre-commit."
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install pre-commit
+      shell: bash
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y pre-commit
