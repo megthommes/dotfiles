@@ -11,13 +11,14 @@ if ! command -v gh &> /dev/null; then
 fi
 
 # check if the SSH key file exists
-if [ ! -f $HOME/.ssh/id_ed25519 ]; then
-    echo -e "${RED}Error: SSH key file ~/.ssh/id_ed25519 does not exist.${RESET}"
+SSH_KEY_FILE="$HOME/.ssh/id_ed25519"
+if [ ! -f "SSH_KEY_FILE" ]; then
+    echo -e "${RED}Error: SSH key file $SSH_KEY_FILE does not exist.${RESET}"
     exit 1
 fi
 
 # check if the SSH key is added to GitHub
-PUBLIC_KEY=$(cat ~/.ssh/id_ed25519.pub | awk '{print $2}')
+PUBLIC_KEY=$(awk '{print $2}' "$SSH_KEY_FILE.pub")
 # authentication
 if ! gh ssh-key list | grep -Fw "$PUBLIC_KEY" | grep -q "authentication"; then
     echo -e "${RED}Error: SSH key is not added to GitHub as an authentication key.${RESET}"

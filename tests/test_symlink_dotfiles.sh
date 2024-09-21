@@ -14,9 +14,10 @@ FILES_TO_TEST=(
     "$XDG_CONFIG_HOME/tmux/.tmux.conf"
 )
 for file in "${FILES_TO_TEST[@]}"; do
-    test -f $file
-    if [ $? != 0 ]; then
+    if [ ! -e "$file" ]; then
         echo -e "${RED}Error: $file does not exist.${RESET}"
+    elif [ ! -L "$file" ]; then
+        echo -e "${RED}Error: $file exists but is not a symlink.${RESET}"
     fi
 done
 
@@ -26,8 +27,9 @@ DIRECTORIES_TO_TEST=(
     "$ZDOTDIR/.plugins"
 )
 for directory in "${DIRECTORIES_TO_TEST[@]}"; do
-    test -d $directory
-    if [ $? != 0 ]; then
+    if [ ! -e "$directory" ]; then
         echo -e "${RED}Error: $directory does not exist.${RESET}"
+    elif [ ! -L "$directory" ]; then
+        echo -e "${RED}Error: $directory exists but is not a symlink.${RESET}"
     fi
 done

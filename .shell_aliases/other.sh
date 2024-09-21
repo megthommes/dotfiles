@@ -7,7 +7,7 @@ alias python=python3
 alias git='$HOMEBREW_PREFIX/bin/git'
 
 # misc
-alias reshell="source $ZDOTDIR/.zshrc"
+alias reshell="source \$ZDOTDIR/.zshrc"
 alias path='echo -e ${PATH//:/\\n}'
 alias now='date +"%T"'
 alias nowtime=now

@@ -57,7 +57,7 @@ if ! command -v gh &> /dev/null; then
     echo -e "${TEAL}Info: GitHub CLI not found. Installing..."
     brew install gh || sudo apt-get install gh
 fi
-SSH_PUBLIC_KEY=$(cat "$SSH_KEY_FILE.pub" | awk '{print $2}')
+SSH_PUBLIC_KEY=$(awk '{print $2}' "$SSH_KEY_FILE.pub")
 GPG_KEY_ID=$(gpg --list-secret-keys --keyid-format=long | grep sec | awk '{print $2}' | awk -F'/' '{print $2}')
 # authentication
 if ! gh ssh-key list | grep -Fw "$SSH_PUBLIC_KEY" | grep -q "authentication"; then
@@ -69,7 +69,7 @@ if ! gh ssh-key list | grep -Fw "$SSH_PUBLIC_KEY" | grep -q "authentication"; th
 fi
 # signing
 if ! gh gpg-key list | grep -q "$GPG_KEY_ID"; then
-    if gpg --armor --export $GPG_KEY_ID | gh gpg-key add - --title "$KEY_NAME"; then
+    if gpg --armor --export "$GPG_KEY_ID" | gh gpg-key add - --title "$KEY_NAME"; then
         echo -e "${BLUE}Success: GPG key added to GitHub for signing.${RESET}"
     else
         echo -e "${YELLOW}Warning: Failed to add GPG key to GitHub for signing.${RESET}"
