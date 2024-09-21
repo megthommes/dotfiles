@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 2
 
       - name: Setup pre-commit
-        uses: ./.github/actions/setup-precommit
+        uses: ./.github/actions/setup-pre-commit
 
       - name: Verify pre-commit installation
         run: pre-commit --version
