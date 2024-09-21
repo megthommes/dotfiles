@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # homebrew packages to install
 export BREW_PACKAGES=(
   "bat"		    	        # A replacement for cat:  https://github.com/sharkdp/bat
@@ -16,6 +18,7 @@ export BREW_PACKAGES=(
   "nano"                # get an enhanced nano
   "nvm"                 # node version manager
   "pipx"                # python package manager
+  "pre-commit"          # pre-commit hooks
   "pyenv"               # python version management
   "ripgrep"             # A replacement for grep: https://github.com/BurntSushi/ripgrep
   "tmux"                # window management https://tmux.github.io/
