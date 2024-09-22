@@ -21,8 +21,7 @@ for script_file in "$ZDOTDIR"/.scripts/*.zsh; do
 done
 
 # prompt
-fpath=("$ZDOTDIR/prompt_megthommes_setup" $fpath)
-source "$ZDOTDIR/prompt_megthommes_setup"
+source "$ZDOTDIR/.prompt.zsh"
 
 # history
 setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
