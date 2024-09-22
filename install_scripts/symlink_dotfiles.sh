@@ -6,7 +6,7 @@ RESET='\033[0m'
 
 # Install the shell config file
 rm -f "$HOME/.zshrc"
-for file in .zshrc .path.sh .env_vars.sh .shortcuts.sh
+for file in .zshrc .path.sh .env_vars.sh .shortcuts.sh .prompt.zsh
 do
   ln -svf "$(pwd)/.files/$file" "$ZDOTDIR/$file"
 done
@@ -19,7 +19,6 @@ mkdir -p "$XDG_CONFIG_HOME/tmux"
 ln -svf "$(pwd)/.files/.tmux.conf" "$XDG_CONFIG_HOME/tmux/.tmux.conf"
 ln -svf "$(pwd)/.files/.gitconfig" "$HOME/.gitconfig"
 ln -svf "$(pwd)/.files/.gitignore_global" "$HOME/.gitignore_global"
-ln -svf "$(pwd)/.files/prompt_megthommes_setup" "$ZDOTDIR/prompt_megthommes_setup"
 
 # create cookiecutter config
 GIT_NAME=$(git config --get user.name)
